@@ -4,76 +4,404 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerGrid: Network Recovery - CrazySpy Studios</title>
-    <link rel="icon" href="../assets/Logo-black.png" type="image/png">
+    <link rel="icon" href="../assets/powergrid_icon.png" type="image/png">
 
-    <!-- Google Fonts: Orbitron for headings, Roboto Mono for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --neon-blue: #00BBFF;
+            --text-main: #E0F2FE;
+            --text-muted: #94A3B8;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+            50% { text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 60px var(--neon-blue); }
+        }
+
+        @keyframes border-glow {
+            0%, 100% { box-shadow: 0 0 10px var(--neon-blue); }
+            50% { box-shadow: 0 0 25px var(--neon-blue), 0 0 10px var(--neon-blue) inset; }
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--neon-blue);
+        }
+
+        a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6), var(--bg-dark)),
+                        url('../assets/Backgroundimage.png') center/cover no-repeat;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .game-icon {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 30px;
+            border-radius: 24px;
+            border: 2px solid var(--neon-blue);
+            animation: border-glow 3s infinite;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+            animation: pulse-glow 3s infinite;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            max-width: 600px;
+        }
+
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+            background-color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            border-radius: 8px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-play:hover {
+            background-color: transparent;
+            color: var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue), inset 0 0 15px var(--neon-blue);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .features-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .ads-highlight {
+            background: rgba(0, 187, 255, 0.05);
+            border: 1px solid rgba(0, 187, 255, 0.3);
+            border-left: 4px solid var(--neon-blue);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        .ads-highlight h3 {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .banner-container {
+            position: relative;
+            padding: 10px;
+        }
+
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(0, 187, 255, 0.1), transparent);
+            border: 1px solid rgba(0, 187, 255, 0.2);
+            border-radius: 16px;
+            z-index: 0;
+        }
+
+        .game-banner {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 187, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            padding: 40px 0;
+            border-top: 1px solid rgba(0, 187, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .copyright {
+            color: #555;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .banner-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .game-icon {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .btn-play {
+                width: 100%;
+                justify-content: center;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="navbar">
-        <a href="../index.html" class="back-link">
-            <span class="icon">&lt;</span> Back to CrazySpy Studios
-        </a>
-    </header>
 
     <main>
-        <section id="hero" class="hero-section">
+        <!-- Hero Section -->
+        <section class="hero">
             <div class="hero-content">
-                <img src="assets/icon_512_512.png" alt="PowerGrid Icon" class="game-icon">
-                <h1 class="game-title">PowerGrid:<br>Network Recovery</h1>
-                <p class="game-tagline">Restore the global grid.</p>
-                <a href="https://play.google.com/store/apps/details?id=com.flavio.powergrid" class="cta-button">Download on Google Play</a>
+                <img src="../assets/powergrid_icon.png" alt="PowerGrid Icon" class="game-icon">
+                <h1>PowerGrid</h1>
+                <p class="tagline">Network Recovery</p>
+                <a href="https://play.google.com/store/apps/details?id=com.flavio.powergrid" class="btn-play">
+                    Download on Google Play
+                </a>
             </div>
         </section>
 
-        <section id="description" class="info-section">
+        <!-- About Section -->
+        <section class="about">
             <div class="container">
-                <h2 class="section-title">The Mission</h2>
-                <p class="section-text">
-                    The world has gone dark. The global power grid has collapsed under a massive cyber attack.
-                    As an elite network engineer, your mission is to reconnect the nodes, reroute power, and
-                    bring the grid back online.
-                </p>
-            </div>
-        </section>
+                <div class="section-header">
+                    <h2>The Mission</h2>
+                </div>
 
-        <section id="features" class="info-section">
-            <div class="container">
-                <h2 class="section-title">Key Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">[!]</div>
-                        <h3>Daily Challenges</h3>
-                        <p>Face unique, increasingly difficult network puzzles every day.</p>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>The world has gone dark. The global power grid has collapsed under a massive, unprecedented cyber attack.</p>
+                        <p>As an elite network engineer, your mission is critical: dive into high-tension logic puzzles to reconnect the nodes, reroute power, and bring the grid back online. Every move matters.</p>
+
+                        <ul class="features-list">
+                            <li><strong>Daily Challenges:</strong> Face unique, increasingly complex network puzzles every single day to test your engineering skills.</li>
+                            <li><strong>Global Ranking:</strong> Compete with other top-tier engineers worldwide. Prove you are the fastest at restoring nodes and securing the grid.</li>
+                        </ul>
+
+                        <div class="ads-highlight">
+                            <h3><span style="font-size: 1.5rem;">🎮</span> Pure Gameplay, No Interruptions</h3>
+                            <p>We believe in an uninterrupted experience. <strong>There are absolutely NO forced or mandatory ads.</strong> All advertisements are completely optional and solely exist to reward you with in-game benefits.</p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">[#]</div>
-                        <h3>Global Ranking</h3>
-                        <p>Compete with engineers worldwide to restore nodes the fastest.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">[*]</div>
-                        <h3>Theme Customization</h3>
-                        <p>Personalize your control panel with unlockable cyber themes.</p>
+
+                    <div class="banner-container">
+                        <img src="../assets/banner-loja.png" alt="PowerGrid Gameplay Banner" class="game-banner">
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 CrazySpy Studios. All rights reserved.</p>
-            <div class="legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="../privacy/powergrid.html">Privacy Policy</a>
+                <a href="mailto:crazyspystudios@gmail.com">Contact: crazyspystudios@gmail.com</a>
             </div>
+            <p class="copyright">&copy; 2024 CrazySpy Studios. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 </html>
