@@ -83,17 +83,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            gap: 90px;
+            text-align: left;
             background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6), var(--bg-dark)),
                         url('../assets/Backgroundimage.png') center/cover no-repeat;
-            padding: 60px 20px;
+            padding: 80px 20px;
+            flex-wrap: wrap;
         }
 
         .hero-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             z-index: 2;
+            max-width: 520px;
+            flex: 1 1 420px;
+        }
+
+        .hero-image {
+            width: 360px;
+            max-width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 0 60px rgba(0, 187, 255, 0.18);
+            object-fit: cover;
+            display: block;
+            flex: 0 0 360px;
         }
 
         .game-icon {
@@ -120,6 +134,10 @@
             margin-bottom: 40px;
             letter-spacing: 1px;
             max-width: 600px;
+        }
+
+        .hero .btn-play {
+            margin-bottom: 20px;
         }
 
         .btn-play {
@@ -310,6 +328,23 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 48px;
+            }
+
+            .hero-content {
+                align-items: center;
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .hero-image {
+                width: min(420px, 100%);
+                margin-top: 40px;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -359,6 +394,8 @@
                     Download on Google Play
                 </a>
             </div>
+
+            <img src="../assets/Backgroundimage.png" alt="PowerGrid highlight image" class="hero-image">
         </section>
 
         <!-- About Section -->
