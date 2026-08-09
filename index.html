@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazySpy Studios</title>
+    <link rel="icon" href="assets/Logo-black.png" type="image/png">
 
     <!-- Google Fonts for a clean, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,20 +61,23 @@
         .logo-container {
             display: inline-block;
             margin-bottom: 10px;
+            background-color: #ffffff; /* White background for the logo */
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .logo-container {
+                box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+            }
         }
 
         .logo {
             max-width: 300px;
             height: auto;
-        }
-
-        /* Logic to toggle logo based on color scheme */
-        .logo-light-mode { display: block; }
-        .logo-dark-mode { display: none; }
-
-        @media (prefers-color-scheme: dark) {
-            .logo-light-mode { display: none; }
-            .logo-dark-mode { display: block; }
+            display: block;
         }
 
         .slogan {
@@ -192,10 +196,7 @@
 
     <header class="container">
         <div class="logo-container">
-            <!-- Light mode logo (CrazySpy Studios.png) -->
-            <img src="assets/logo-dark-transparent.png" alt="CrazySpy Studios" class="logo logo-light-mode">
-            <!-- Dark mode logo (CrazySpy Studios-White.png) -->
-            <img src="assets/logo-white-transparent.png" alt="CrazySpy Studios" class="logo logo-dark-mode">
+            <img src="assets/Full-Logo-vertical-black.png" alt="CrazySpy Studios" class="logo">
         </div>
         <p class="slogan">Powered by Curiosity</p>
     </header>
