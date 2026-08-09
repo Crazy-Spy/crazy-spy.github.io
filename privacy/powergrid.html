@@ -1,19 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - PowerGrid</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Privacy Policy - PowerGrid: Network Recovery</title>
+    <link rel="icon" href="../assets/Logo-black.png" type="image/png">
+
+    <!-- Google Fonts: Orbitron for headings, Roboto Mono for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-        h1 { color: #333; }
-        a { color: #3b82f6; text-decoration: none; }
+        body {
+            font-family: 'Roboto Mono', monospace;
+            padding: 2em;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #081018;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+        }
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00bbff;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        a { color: #00bbff; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .language-section {
+            padding: 20px;
+            border: 1px solid #00bbff33;
+            border-radius: 8px;
+            background-color: #0a141e;
+            display: none; /* Hide by default, controlled by JS */
+        }
+        .language-section.active {
+            display: block;
+        }
+        hr { border: 0; height: 1px; background: #333; margin: 40px 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+        .header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        .dropdown-container {
+            text-align: right;
+        }
+        select {
+            background-color: #081018;
+            color: #00bbff;
+            border: 1px solid #00bbff;
+            padding: 5px 10px;
+            font-family: 'Roboto Mono', monospace;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+        select:hover {
+            background-color: #00bbff11;
+        }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy for PowerGrid: Network Recovery</h1>
-    <p>This is a placeholder for the PowerGrid Privacy Policy.</p>
-    <a href="../index.html">&larr; Back to Home</a>
+
+    <div class="header-controls">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+        <div class="dropdown-container">
+            <select id="language-selector" onchange="changeLanguage()">
+                <option value="en-US">English</option>
+                <option value="pt-BR">Português</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="language-section active" id="en-US">
+        <h1>Privacy Policy</h1>
+        <p>The <strong>PowerGrid: Network Recovery</strong> app was developed by <strong>CrazySpy Studios</strong> as a Free app. This service is provided at no cost and is intended for use as is.</p>
+
+        <h2>1. Information Collection and Use</h2>
+        <p>For a better experience while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to:</p>
+        <ul>
+            <li><strong>Player Identifiers:</strong> We use the Google Play Games ID to synchronize your progress in the cloud (Cloud Sync) and display your score in the Global Rankings.</li>
+            <li><strong>Performance Data:</strong> We collect game statistics (time, moves, levels completed) for competitive ranking purposes.</li>
+        </ul>
+
+        <h2>2. Third-Party Services</h2>
+        <p>The app does use third-party services that may collect information used to identify you:</p>
+        <ul>
+            <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+            <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a> (Advertising)</li>
+            <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Firestore</a> (Ranking Storage)</li>
+        </ul>
+
+        <h2>3. Security</h2>
+        <p>We value your trust in providing us your information. We only store what is necessary for the game's social features. No sensitive or financial data is collected.</p>
+
+        <h2>4. Changes to This Privacy Policy</h2>
+        <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes.</p>
+
+        <h2>5. Contact Us</h2>
+        <p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at: <strong>crazyspystudios@gmail.com</strong></p>
+
+        <p><small>Last updated: August 09, 2026</small></p>
+    </div>
+
+    <div class="language-section" id="pt-BR">
+        <h1>Política de Privacidade</h1>
+        <p>O aplicativo <strong>PowerGrid: Network Recovery</strong> foi desenvolvido pela <strong>CrazySpy Studios</strong> como um app Gratuito. Este serviço é fornecido sem custo e destina-se ao uso como está.</p>
+
+        <h2>1. Coleta e Uso de Informações</h2>
+        <p>Para uma melhor experiência ao usar nosso Serviço, podemos exigir que você nos forneça certas informações de identificação pessoal, incluindo, mas não se limitando a:</p>
+        <ul>
+            <li><strong>Identificadores de Jogador:</strong> Usamos o ID do Google Play Games para sincronizar seu progresso na nuvem (Cloud Sync) e exibir sua pontuação nos Rankings Globais.</li>
+            <li><strong>Dados de Performance:</strong> Coletamos estatísticas de jogo (tempo, movimentos, níveis concluídos) para fins de classificação competitiva.</li>
+        </ul>
+
+        <h2>2. Serviços de Terceiros</h2>
+        <p>O aplicativo utiliza serviços de terceiros que podem coletar informações usadas para identificá-lo:</p>
+        <ul>
+            <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+            <li><a href="https://support.google.com/admob/answer/6128543?hl=pt-BR" target="_blank">AdMob</a> (Publicidade)</li>
+            <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Firestore</a> (Armazenamento de Rankings)</li>
+        </ul>
+
+        <h2>3. Segurança</h2>
+        <p>Valorizamos sua confiança ao nos fornecer suas informações. Armazenamos apenas o necessário para as funcionalidades sociais do jogo. Nenhum dado sensível ou financeiro é coletado.</p>
+
+        <h2>4. Alterações nesta Política</h2>
+        <p>Podemos atualizar nossa Política de Privacidade periodicamente. Recomendamos que você revise esta página ocasionalmente para verificar quaisquer alterações.</p>
+
+        <h2>5. Contato</h2>
+        <p>Se você tiver dúvidas ou sugestões sobre minha Política de Privacidade, não hesite em entrar em contato: <strong>crazyspystudios@gmail.com</strong></p>
+
+        <p><small>Última atualização: 09 de Agosto de 2026</small></p>
+    </div>
+
+    <script>
+        function changeLanguage() {
+            var selectedLang = document.getElementById("language-selector").value;
+            var sections = document.querySelectorAll('.language-section');
+
+            sections.forEach(function(section) {
+                if (section.id === selectedLang) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Update document language
+            document.documentElement.lang = selectedLang === 'pt-BR' ? 'pt-BR' : 'en';
+        }
+    </script>
 </body>
 </html>
